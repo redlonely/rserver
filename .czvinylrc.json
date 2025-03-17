@@ -1,0 +1,69 @@
+{
+    "headerFormat": "{type}: {emoji} [{ticket_id}] {subject}",
+    "commitTypes": [
+        {
+            "description": "构建过程或辅助工具的变动",
+            "emoji": "🤖",
+            "value": "chore"
+        },
+        {
+            "description": "持续集成的配置文件和脚本的更改",
+            "emoji": "🚀",
+            "value": "CI"
+
+        },
+        {
+            "description": "文档更新",
+            "emoji": "📘",
+            "value": "docs"
+        },
+        {
+            "description": "新增功能",
+            "emoji": "🔥",
+            "value": "feat"
+        },
+        {
+            "description": "修复Bug",
+            "emoji": "🐞",
+            "value": "fix"
+        },
+        {
+            "description": "性能优化",
+            "emoji": "⚡️",
+            "value": "perf"
+        },
+        {
+            "description": "代码重构（不包括 bug 修复、功能新增）",
+            "emoji": "💡",
+            "value": "refactor"
+        },
+        {
+            "description": "发布新版本",
+            "emoji": "🔖",
+            "value": "release"
+        },
+        {
+            "description": "代码格式（不影响功能，例如空格、分号等格式修正）",
+            "emoji": "🎨",
+            "value": "style"
+        },
+        {
+            "description": "添加疏漏测试或已有测试改动",
+            "emoji": "✅",
+            "value": "test"
+        }
+    ],
+    "skipScope": false,
+    "subjectMaxLength": 70,
+    "subjectMinLength": 3,
+    "typeQuestion": "选择提交类型:",
+    "scopeQuestion": "请输入一个改动范围 :(可选)",
+    "subjectQuestion": "请输入一个提交信息:",
+    "bodyQuestion": "请输入一个详细的改动范围描述 :(可选)",
+    "ticketIdQuestion": "输入关联的 Ticket ID :(可选)",
+    "breakingChangesQuestion": "是否有破坏性变动 :(可选)",
+    "issuesQuestion": "是否有关联的 Issue 需要关闭 :(可选)",
+    "skipIssues": true,
+    "skipTicketId": true,
+    "skipBreakingChanges": true
+}

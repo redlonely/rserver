@@ -1,0 +1,14 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+// 数据源配置
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Article {
+  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  title String @unique
+}
