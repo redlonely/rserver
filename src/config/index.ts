@@ -1,21 +1,33 @@
-export default {
-    server: {
-        port: process.env.PORT || 3000,
-        nodeEnv: process.env.NODE_ENV || 'development',
-        apiPrefix: process.env.API_PREFIX || '/api'
-    },
-    db: {
-        host: process.env.DB_HOST || 'localhost',
-        port: process.env.DB_PORT || 27017,
-        name: process.env.DB_NAME || 'mydatabase',
-        user: process.env.DB_USER,
-        password: process.env.DB_PASSWORD
-    },
-    jwt: {
-        secret: process.env.JWT_SECRET || 'default_secret_key',
-        expiresIn: process.env.JWT_EXPIRES_IN || '1d'
-    },
-    cors: {
-        origin: process.env.CORS_ORIGIN || '*'
-    }
+import dotenv from 'dotenv';
+import 'tsconfig-paths/register';
+dotenv.config();
+
+const {
+    PORT,
+    NODE_ENV,
+    DB_HOST,
+    DB_PORT,
+    DB_NAME,
+    DB_USER,
+    DB_PASSWORD,
+    DATABASE_URL,
+    JWT_SECRET,
+    JWT_EXPIRES_IN,
+    API_PREFIX,
+    CORS_ORIGIN
+} = process.env;
+
+export const config = {
+    PORT: PORT || '3000',
+    NODE_ENV: NODE_ENV || 'development',
+    DB_HOST: DB_HOST || 'mongodb://localhost:27017',
+    DB_PORT: DB_PORT || '27017',
+    DB_NAME: DB_NAME || 'blog',
+    DB_USER: DB_USER || '',
+    DB_PASSWORD: DB_PASSWORD || '',
+    DATABASE_URL: DATABASE_URL || '',
+    JWT_SECRET: JWT_SECRET || 'secret',
+    JWT_EXPIRES_IN: JWT_EXPIRES_IN || '1d',
+    API_PREFIX: API_PREFIX || '/api',
+    CORS_ORIGIN: CORS_ORIGIN || '*'
 };

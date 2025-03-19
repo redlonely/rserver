@@ -2,7 +2,6 @@
     "author": "redlonely",
     "description": "rblog server",
     "license": "ISC",
-    "type": "module",
     "main": "server/index.js",
     "name": "rblog-server",
     "version": "1.0.0",
@@ -17,11 +16,11 @@
         "prepare": "husky"
     },
     "dependencies": {
-        "@prisma/client": "^6.5.0",
         "cookie-parser": "^1.4.7",
         "cors": "^2.8.5",
         "express": "^4.18.2",
         "helmet": "^8.0.0",
+        "mongoose": "^8.12.1",
         "morgan": "^1.10.0",
         "rotating-file-stream": "^3.2.6",
         "tsconfig-paths": "^4.2.0"
@@ -44,8 +43,6 @@
         "picocolors": "^1.1.1",
         "prettier": "3.5.3",
         "prettier-plugin-organize-imports": "^4.1.0",
-        "prettier-plugin-prisma": "^5.0.0",
-        "prisma": "^6.5.0",
         "ts-node": "^10.9.2",
         "typescript": "^5.3.3"
     },

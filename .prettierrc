@@ -4,7 +4,7 @@
     "trailingComma": "none",
     "printWidth": 100,
     "tabWidth": 4,
-    "plugins": ["prettier-plugin-organize-imports", "prettier-plugin-prisma"],
+    "plugins": ["prettier-plugin-organize-imports"],
     "importOrder": [
         "<THIRD_PARTY_MODULES>",
         "^@server/(.*)$",

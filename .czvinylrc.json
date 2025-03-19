@@ -10,7 +10,6 @@
             "description": "持续集成的配置文件和脚本的更改",
             "emoji": "🚀",
             "value": "CI"
-
         },
         {
             "description": "文档更新",

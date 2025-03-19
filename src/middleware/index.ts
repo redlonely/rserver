@@ -1,13 +1,10 @@
 import router from '@/router';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
-import express, { Application, Express } from 'express';
+import express, { Express } from 'express';
 import helmet from 'helmet';
 import { errorHandler } from './error';
 import { localogger, logger } from './logger';
-
-// 中间件类型
-type Middleware = (app: Application) => void;
 
 export const useMiddleware = (app: Express) => {
     // 安全性相关中间件
