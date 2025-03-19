@@ -1,6 +1,8 @@
 import express from 'express';
 
 import ArticleRoute from './routes/article';
+import AuthorRoute from './routes/author';
+import CommentRoute from './routes/comment';
 
 const router = express.Router();
 
@@ -18,7 +20,8 @@ router.get('/', (req, res) => {
     });
 });
 
-// 用户路由
-router.use('/articles', ArticleRoute);
+router.use('/articles', ArticleRoute); // 文章路由
+router.use('/authors', AuthorRoute); // 评论路由
+router.use('/comments', CommentRoute); // 评论路由
 
 export default router;

@@ -17,6 +17,11 @@ declare namespace NodeJS {
         DB_PASSWORD: string;
         DATABASE_URL: string;
 
+        // Redis配置
+        REDIS_HOST: string;
+        REDIS_PORT: number;
+        REDIS_PASSWORD: string;
+
         // JWT配置
         JWT_SECRET: string;
         JWT_EXPIRES_IN: string;

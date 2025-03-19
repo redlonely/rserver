@@ -1,21 +1,41 @@
-import mongoose, { Document, Schema } from 'mongoose';
+import mongoose, { Schema } from 'mongoose';
 
-interface IAuthor extends Document {
-    name: string; // 作者名
-    avatar: string; // 头像
-    gender: string; // 性别
-    introduction: string; // 介绍
+// prettier-ignore
+enum Gender {
+    secret = 0,
+    male   = 1,
+    female = 2
 }
 
-const AuthorSchema: Schema = new Schema(
+// prettier-ignore
+interface IAuthor {
+    nickname    : string;  // 作者名
+    email       : string;  // 邮箱
+    website     : string;  // 个人网站
+    avatar      : string;  // 头像
+    slogan      : string;  // 个性签名
+    gender      : number;  // 性别
+    createdAt   : Date;    // 创建时间
+    updatedAt   : Date;    // 更新时间
+}
+
+// prettier-ignore
+const AuthorSchema = new Schema<IAuthor>(
     {
-        name: { type: String, required: true },
-        avatar: { type: String, default: '' },
-        gender: { type: String, enum: ['male', 'female', 'other'], default: 'other' },
-        introduction: { type: String, default: '' }
+        nickname: { type: String, required: true },
+        email   : { type: String, required: true },
+        website : { type: String, default: '' },
+        avatar  : { type: String, default: '' },
+        slogan  : { type: String, default: '' },
+        gender  : { type: Number, default: Gender.secret }
     },
     { timestamps: true }
 );
+
+AuthorSchema.pre<IAuthor>('save', function (next) {
+    this.createdAt ? (this.updatedAt = new Date()) : (this.createdAt = this.updatedAt = new Date());
+    next();
+});
 
 const Author = mongoose.model<IAuthor>('Author', AuthorSchema);
 

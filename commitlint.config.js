@@ -1,8 +1,5 @@
-export default {
+module.exports = {
     extends: ['@commitlint/config-conventional'],
-    rules: {
-        // @see: https://commitlint.js.org/#/reference-rules
-    },
     prompt: {
         useEmoji: true,
         emojiAlign: 'center',

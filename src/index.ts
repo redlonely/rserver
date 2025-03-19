@@ -11,6 +11,7 @@ import { useMiddleware } from './middleware';
 import mongo from '@/database/mongo';
 
 import { config } from '@/config';
+import redis from './database/redis';
 
 const app: Express = express();
 
@@ -19,6 +20,7 @@ useMiddleware(app);
 
 // 数据库
 mongo.connect();
+redis.connect();
 
 // 路由
 app.listen(config.PORT, () => {

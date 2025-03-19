@@ -3,9 +3,11 @@ import { model, Schema } from 'mongoose';
 interface IVisit {
     ip: string;
     userAgent: string;
+    createdAt: Date;
+    updatedAt: Date;
 }
 
-const VisitSchema: Schema = new Schema(
+const VisitSchema = new Schema<IVisit>(
     {
         ip: String,
         userAgent: String

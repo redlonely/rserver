@@ -1,10 +1,13 @@
-import mongosose from 'mongoose';
-
 import { config } from '@/config';
 import { logger } from '@/utils/logger';
+import mongosose from 'mongoose';
+import colors from 'picocolors';
 
 const connect = async () => {
     mongosose.connect(config.DATABASE_URL, {});
+    mongosose.connection.on('connected', () => {
+        console.log(colors.green(`Successful Connected to MongoDB`));
+    });
     mongosose.connection.on('error', (err) => {
         logger.error('MongoDB connection error:', err);
         console.error('MongoDB connection error:', err);
