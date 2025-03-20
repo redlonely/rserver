@@ -1,4 +1,4 @@
-import mongoose, { Schema } from 'mongoose';
+import { model, Schema } from 'mongoose';
 
 // prettier-ignore
 enum Gender {
@@ -7,14 +7,14 @@ enum Gender {
     female = 2
 }
 
+// 访客表
 // prettier-ignore
-interface IAuthor {
+interface IVisitor {
     nickname : string; // 昵称
     email    : string; // 邮箱
     website  : string; // 网站
     avatar   : string; // 头像
     gender   : Gender; // 性别
-    slogan   : string; // 格言
     ip       : string; // IP
     userAgent: string; // 设备信息
     createdAt: Date;   // 创建时间
@@ -22,7 +22,7 @@ interface IAuthor {
 }
 
 // prettier-ignore
-const AuthorSchema = new Schema<IAuthor>(
+const VisitorSchema = new Schema<IVisitor>(
     {
         nickname : { type: String, required: true , unique: true},
         email    : { type: String, required: true , unique: true },
@@ -32,14 +32,16 @@ const AuthorSchema = new Schema<IAuthor>(
         ip       : { type: String, default: '' },
         userAgent: { type: String, default: '' }
     },
-    { timestamps: true }
+    {
+        timestamps: true
+    }
 );
 
-AuthorSchema.pre<IAuthor>('save', function (next) {
+VisitorSchema.pre('save', function (next) {
     this.createdAt ? (this.updatedAt = new Date()) : (this.createdAt = this.updatedAt = new Date());
     next();
 });
 
-const Author = mongoose.model<IAuthor>('Author', AuthorSchema);
+const Visitor = model<IVisitor>('Visitor', VisitorSchema);
 
-export { Author, AuthorSchema, IAuthor };
+export { IVisitor, Visitor, VisitorSchema };

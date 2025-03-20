@@ -4,7 +4,7 @@ import { AuthorController } from '../../controllers/author';
 const router = express.Router();
 
 // 添加作者
-router.post('/', AuthorController.insertAuthor);
+router.post('/', AuthorController.createAuthor);
 
 // 删除作者
 router.delete('/:id', AuthorController.deleteAuthor);

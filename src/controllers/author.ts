@@ -5,7 +5,7 @@ import { isEmpty } from 'lodash';
 
 export class AuthorController {
     // 添加作者
-    static async insertAuthor(req: Request, res: Response) {
+    static async createAuthor(req: Request, res: Response) {
         try {
             const { nickname, email, ...othor } = req.body;
             if (isEmpty(nickname)) {
@@ -74,8 +74,9 @@ export class AuthorController {
     static async getAuthors(req: Request, res: Response) {
         try {
             const { page = 1, pre_page = 10 } = req.query;
-            // prettier-ignore
-            const authors = await Author.find() .skip((+page - 1) * +pre_page) .limit(+pre_page);
+            const authors = await Author.find()
+                .skip((+page - 1) * +pre_page)
+                .limit(+pre_page);
             res.json({
                 ok: true,
                 code: 1,

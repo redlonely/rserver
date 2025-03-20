@@ -50,7 +50,9 @@ export class ArticleControler {
             const id = req.params.id;
             const data = req.body;
             if (isEmpty(id)) return res.status(400).json({ error: '文章 ID 不能为空' });
-            const article = await Article.findByIdAndUpdate(id, data, { new: true }).exec();
+            const article = await Article.findByIdAndUpdate(id, data, { new: true })
+                .select('-content -__v')
+                .exec();
             if (!article) return res.status(404).json({ error: '文章未找到' });
             res.json({ ok: true, code: 1, data: article, message: '文章更新成功！' });
         } catch (error) {
@@ -68,10 +70,10 @@ export class ArticleControler {
                     path: 'author',
                     select: '_id nickname avatar website'
                 })
-                // .populate({
-                //     path: 'tags',
-                //     select: '_id name'
-                // })
+                .populate({
+                    path: 'tags',
+                    select: '_id name description'
+                })
                 .sort({ createdAt: -1 })
                 .skip((+page - 1) * +pre_page)
                 .limit(+pre_page);
@@ -100,6 +102,10 @@ export class ArticleControler {
                 .populate({
                     path: 'author',
                     select: '_id nickname avatar website'
+                })
+                .populate({
+                    path: 'tags',
+                    select: '_id name description'
                 })
                 .exec();
             if (!article) return res.status(404).json({ error: '文章未找到' });
